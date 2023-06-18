@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Results</h1>
+        <div class="results">
+            <div class="transcript">
+                <h2>Contents:</h2>
+                <p>{{ text }}</p>
+            </div>
+            <div class="sentiment">
+                <h2>Sentiment Analysis:</h2>
+                <p>Evaluation: {{ sentiment }}</p>
+                <p>Degree: {{ sentiment_magnitude }}</p>
+            </div>
+            <div class="entities">
+                <h2>The Products Mentioned:</h2>
+                <ul>
+                    {% for entity in results %}
+                        <li>{{ entity }} </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+	<form action="/" method="get">
+            <input type="submit" value="Upload Another File" class="upload-button">
+        </form>
+    </div>
+</body>
+</html>
+

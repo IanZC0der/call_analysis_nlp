@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Calls Analysis Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Calls Analysis Tool</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+            <label for="audio" class="upload-button">Choose File</label>
+            <input type="file" name="audio" id="audio" accept=".wav">
+            <span class="upload-label">No file chosen</span>
+            <input type="submit" value="Upload" class="upload-button">
+        </form>
+    </div>
+    <script>
+        const fileInput = document.getElementById('audio');
+        const uploadLabel = document.querySelector('.upload-label');
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                uploadLabel.textContent = fileInput.files[0].name;
+            } else {
+                uploadLabel.textContent = 'No file chosen';
+            }
+        });
+    </script>
+</body>
+</html>
+
